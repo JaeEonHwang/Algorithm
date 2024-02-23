@@ -1,39 +1,6 @@
 import sys
 sys.stdin = open('input.txt', 'r')
 
-
-N = int(input())
-arr = [list(map(int, input().split())) for _ in range(N)]
-# 파이프 끝점이 해당 인덱스로 이동할 수 있는 경우의 수를 음수로 표현
-# 음수인 이유 = 양수인 벽(1)과 구분하기 위해서
-# 시작포인트 -1로 설정
-arr[0][1] = -1
-# 각 인덱스에 대해서
-for r in range(N):
-    for c in range(N):
-        # [벽 유무 확인용 기존 값, 가로 파이프로 넘어오는 경우의 수, 대각선 파이프로 넘어오는 경우의 수, 세로 파이프로 경우의 수]
-        arr[r][c] = [arr[r][c], 0, 0, 0]
-        # 처음 시작점이면, 가로 파이프로 넘어오는 경우의 수가 1가지라고 표시하고 넘어가기
-        if r == 0 and c == 1:
-            arr[r][c][1] = -1
-            continue
-        # 벽이면 아무 것도 안 하고 넘어가기
-        if arr[r][c][0] == 1:
-            continue
-        # 가로 파이프로 넘어왔으면, 이전 칸에서 가로파이프 + 대각선 파이프로 넘어온 경우의 수 더하기 + (유효 인덱스 확인)
-        if 0 <= r - 1:
-            arr[r][c][3] = (arr[r-1][c][2] + arr[r-1][c][3])
-        # 대각선 파이프로 넘어왔으면, 벽 유무 + 유효 인덱스 확인해주고 이전 칸의 모든 경우의 수 더해주기
-        if 0 <= r - 1 and 0 <= c - 1 and arr[r-1][c][0] != 1 and arr[r][c-1][0] != 1:
-            arr[r][c][2] = (arr[r-1][c-1][1] + arr[r-1][c-1][2] + arr[r-1][c-1][3])
-        # 세로 파이프로 넘어왔으면, 이전 칸에서 대각선 파이프 + 가로 파이프로 넘어온 경우의 수 더하기 + (유효 인덱스 확인)
-        if 0 <= c - 1:
-            arr[r][c][1] = (arr[r][c-1][1] + arr[r][c-1][2])
-
-# 마지막 칸이 1이면 이동 불가능하므로 0 출력
-if arr[N-1][N-1][0] == 1:
-    print(0)
-# 그 외의 경우에는 모든 경우의 수 더해서 출력
-else:
-    print(-sum(arr[N-1][N-1]))
-
+maze = ""
+maze = [[list(map(int, input().split(' '))) for _ in range(5)] for _ in range(5)]
+print(maze)

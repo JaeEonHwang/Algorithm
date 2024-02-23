@@ -10,12 +10,12 @@ def isclose(comb):
     v[0] = 1
     queue = [0]
     while queue:
-        seatA = comb[queue[0]]
+        A = queue[0]
         for B in range(7):
-            if ((seatA // 5 == comb[B] // 5 and abs(seatA-comb[B]) == 1) or abs(seatA-comb[B]) == 5) and v[B] == 0:
+            if ((comb[A] // 5 == comb[B] // 5 and abs(comb[A]-comb[B]) == 1) or abs(comb[A]-comb[B]) == 5) and v[B] == 0:
                 v[B] = 1
                 queue.append(B)
-        queue.pop()
+        queue.pop(0)
     if 0 in v:
         return False
     else:
@@ -36,6 +36,6 @@ for comb in combs:
             if seats[num] == 'Y':
                 Y += 1
         if Y < 4:
-            print(comb)
+
             ans += 1
 print(ans)
