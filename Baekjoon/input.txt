@@ -1,7 +1,4 @@
-6
-hello
-hi
-h
-run
-rerun
-running
+2 1
+5 10
+100 100
+11
