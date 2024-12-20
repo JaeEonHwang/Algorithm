@@ -94,3 +94,10 @@ SELECT IFNULL(NULL, 'Default');  -- 'Default', 첫번째 매개변수가 NULL이
 SELECT NULLIF(10, 10);  -- NULL, 매개변수들이 같으면 NULL, 아니면 첫번째 매개변수 반환
 SELECT COALESCE(NULL, NULL, 'First Non-Null');  -- 'First Non-Null', 처음으로 NULL이 아닌 것 반환
 ```
+
+</br>
+
+### DATE_FORMAT
+```SQL
+DATE_FORMAT(date,format)
+```
